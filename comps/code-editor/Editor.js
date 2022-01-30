@@ -11,10 +11,6 @@ import { Controlled as ControlledEditor } from 'react-codemirror2';
 export default function Editor({ language, value, onChange }) {
   // --------------------------------------------
 
-  const [open, setOpen] = useState(true);
-
-  // --------------------------------------------
-
   function handleChange(editor, data, value) {
     onChange(value);
   }
