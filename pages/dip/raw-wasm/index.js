@@ -24,16 +24,11 @@ export default function Home() {
         width='512px'
       ></canvas>
 
-      <Script
-        src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js'
-        strategy='beforeInteractive'
-      />
-
       <button
-        onClick={() => {
+        onClick={async () => {
           // Create new img element
           img_ref.current = new Image();
-          img_ref.current.src = '/lena.png';
+          await (img_ref.current.src = '/lena.png');
           console.log(img_ref.current);
 
           const canvas = document.getElementById('canvas');
@@ -42,7 +37,7 @@ export default function Home() {
           input_array_ref.current = new Uint8Array();
         }}
       >
-        Step 1
+        Load Image
       </button>
 
       <button
@@ -64,7 +59,7 @@ export default function Home() {
           input_array_ref.current = imgData_Uint8;
         }}
       >
-        Step 2
+        Render Loaded Image
       </button>
 
       <Script src='/wasm/hello.js' strategy='beforeInteractive' />
