@@ -18,7 +18,7 @@ export default function Editor({ language, value, onChange }) {
   // --------------------------------------------
 
   return (
-    <div className={`editor-container`}>
+    <>
       <ControlledEditor
         onBeforeChange={handleChange}
         value={value}
@@ -31,6 +31,6 @@ export default function Editor({ language, value, onChange }) {
           lineNumbers: true,
         }}
       />
-    </div>
+    </>
   );
 }

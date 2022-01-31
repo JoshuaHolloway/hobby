@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import Editor from './Editor';
 import useLocalStorage from '../../code/hooks/useLocalStorage';
+import { resetJS, resetHTML, resetCSS } from './reset-code';
 
 // ==============================================
 
-export default function CodeEditor() {
+export default function CodeEditor(props) {
   // --------------------------------------------
 
   // const [mounted, setMounted] = useState(false);
@@ -17,7 +18,7 @@ export default function CodeEditor() {
 
   const [html, setHtml] = useLocalStorage('html', '');
   const [css, setCss] = useLocalStorage('css', '');
-  const [js, setJs] = useLocalStorage('js', '');
+  const [js, setJs] = useLocalStorage('js', props?.init_js ?? '');
   const [srcDoc, setSrcDoc] = useState('');
 
   // --------------------------------------------
@@ -38,13 +39,24 @@ export default function CodeEditor() {
   // --------------------------------------------
 
   return (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+    <div
+      style={{
+        border: 'solid black 2px',
+        height: '100vh',
+      }}
+    >
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          border: 'solid black 2px',
+        }}
+      >
         <Editor language='xml' value={html} onChange={setHtml} />
         <Editor language='css' value={css} onChange={setCss} />
         <Editor language='javascript' value={js} onChange={setJs} />
       </div>
-      <div className='pane'>
+      <div style={{ height: '100%' }}>
         <iframe
           srcDoc={srcDoc}
           title='output'
@@ -52,9 +64,8 @@ export default function CodeEditor() {
           frameBorder='0'
           width='100%'
           height='100%'
-          style={{ background: 'blue' }}
         />
       </div>
-    </>
+    </div>
   );
 }
