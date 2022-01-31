@@ -12,9 +12,11 @@ export default function Home() {
       <hr />
       <Link href='/dip/raw-wasm'>Image Processing (WebAssembly)</Link>
       <hr />
-      <Link href='/nn'>Math</Link>
+      <Link href='/nn'>Deep Learning</Link>
       <hr />
       <Link href='/web-audio'>Audio</Link>
+      <hr />
+      <Link href='/math'>Math</Link>
       <hr />
       <Link href='/code-editor'>Code Editor</Link>
       <hr />
