@@ -1,25 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import CodeEditor from '../../../comps/code-editor/code-editor';
+import reset_code from './reset-code';
 
 // ==============================================
 
-export default function Home() {
-  // --------------------------------------------
-
-  // const [mounted, setMount] = useState(false);
-  // useEffect(() => {
-  //   setMount(true);
-  //   return () => setMount(false);
-  // }, []);
-
-  // --------------------------------------------
-
+export default function RawJSPage() {
   // --------------------------------------------
 
   return (
     <>
-      <CodeEditor init_js='const x = 0;' />
+      <CodeEditor reset_code={reset_code} />
     </>
   );
 }

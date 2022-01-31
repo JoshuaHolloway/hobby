@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import Editor from './Editor';
 import useLocalStorage from '../../code/hooks/useLocalStorage';
-import { resetJS, resetHTML, resetCSS } from './reset-code';
 
 // ==============================================
 
 export default function CodeEditor(props) {
   // --------------------------------------------
 
-  // const [mounted, setMounted] = useState(false);
-  // useEffect(() => {
-  //   setMounted(true);
-  //   return () => setMounted(false);
-  // }, []);
+  const { resetHTML, resetJS, resetCSS } = props.reset_code;
+  const resetCode = () => {
+    setHtml(resetHTML());
+    setJs(resetJS());
+    setCss(resetCSS());
+  };
 
   // --------------------------------------------
 
   const [html, setHtml] = useLocalStorage('html', '');
   const [css, setCss] = useLocalStorage('css', '');
-  const [js, setJs] = useLocalStorage('js', props?.init_js ?? '');
+  const [js, setJs] = useLocalStorage('js', '');
   const [srcDoc, setSrcDoc] = useState('');
 
   // --------------------------------------------
@@ -45,11 +45,14 @@ export default function CodeEditor(props) {
         height: '100vh',
       }}
     >
+      <button onClick={resetCode}>Reset Code</button>
+
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           border: 'solid black 2px',
+          height: '50%vh',
         }}
       >
         <Editor language='xml' value={html} onChange={setHtml} />
