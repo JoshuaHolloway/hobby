@@ -1,10 +1,28 @@
 import { useState } from 'react';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
-import 'codemirror/mode/xml/xml';
+import dynamic from 'next/dynamic';
+
+// import 'codemirror/lib/codemirror.css';
+// import 'codemirror/theme/material.css';
+// import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/css/css';
-import { Controlled as ControlledEditor } from 'react-codemirror2';
+// import 'codemirror/mode/css/css';
+
+// https://youtu.be/DA0ie1RPP6g
+if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
+  import('codemirror/lib/codemirror.css');
+  import('codemirror/theme/material.css');
+  import('codemirror/mode/xml/xml');
+  // import('codemirror/mode/javascript/javascript');
+  import('codemirror/mode/css/css');
+}
+
+// import { Controlled as ControlledEditor } from 'react-codemirror2';
+const ControlledEditor = dynamic(
+  () => {
+    return import('react-codemirror2').then((mod) => mod.Controlled);
+  },
+  { ssr: false }
+);
 
 // ==============================================
 

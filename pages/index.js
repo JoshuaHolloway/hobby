@@ -3,9 +3,10 @@ import Link from 'next/link';
 
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.container}>
+    <>
+      <hr />
       <Link href='/dip/opencv'>Image Processing (opencv)</Link>
       <hr />
       <Link href='/dip/raw-js'>Image Processing (JavaScript)</Link>
@@ -20,6 +21,8 @@ export default function Home() {
       <hr />
       <Link href='/code-editor'>Code Editor</Link>
       <hr />
-    </div>
+      <Link href='/alg/'>Algorithms</Link>
+      <hr />
+    </>
   );
 }
