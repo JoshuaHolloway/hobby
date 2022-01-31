@@ -1,18 +1,12 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
-// import 'codemirror/lib/codemirror.css';
-// import 'codemirror/theme/material.css';
-// import 'codemirror/mode/xml/xml';
-import 'codemirror/mode/javascript/javascript';
-// import 'codemirror/mode/css/css';
-
 // https://youtu.be/DA0ie1RPP6g
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   import('codemirror/lib/codemirror.css');
   import('codemirror/theme/material.css');
   import('codemirror/mode/xml/xml');
-  // import('codemirror/mode/javascript/javascript');
+  import('codemirror/mode/javascript/javascript');
   import('codemirror/mode/css/css');
 }
 
