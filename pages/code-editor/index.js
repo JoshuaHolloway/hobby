@@ -1,5 +1,5 @@
 import CodeEditor from '../../comps/code-editor/code-editor';
-import reset_code from './reset-code';
+import reset_code from '../..//code/helper/reset-code-editor/code-editor/reset-code';
 
 // ==============================================
 
