@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import CodeEditor from '../../../comps/code-editor/code-editor';
-import reset_code from './reset-code';
+// import { useState, useEffect, useRef } from 'react';
+import CodeEditor from '../../../comps/CodeEditor/CodeEditor';
+import reset_code from '../../../code/helper/reset-code-editor/dip/raw-js/reset-code';
 
 // ==============================================
 

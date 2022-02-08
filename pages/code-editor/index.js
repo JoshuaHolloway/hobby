@@ -1,4 +1,4 @@
-import CodeEditor from '../../comps/code-editor/code-editor';
+import CodeEditor from '../../comps/CodeEditor/CodeEditor';
 import reset_code from '../..//code/helper/reset-code-editor/code-editor/reset-code';
 
 // ==============================================

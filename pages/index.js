@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-import styles from '../styles/Home.module.css';
-
 export default function HomePage() {
   return (
     <>

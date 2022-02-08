@@ -1,5 +1,5 @@
 // import CodeEditor from '../../../../code-editor';
-import CodeEditor from '../../../../../comps/code-editor/Code-Editor';
+import CodeEditor from '../../../../../comps/CodeEditor/CodeEditor';
 import reset_code from '../../../../../code/helper/reset-code-editor/alg/tree/binary/height-balanced/reset-code';
 
 // ==============================================
