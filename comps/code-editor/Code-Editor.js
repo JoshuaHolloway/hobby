@@ -42,23 +42,21 @@ export default function CodeEditor(props) {
     <div
       style={{
         border: 'solid black 2px',
-        // height: '100vh',
+        height: '100vh',
       }}
     >
       <button onClick={resetCode}>Reset Code</button>
 
       <div
-        style={
-          {
-            // display: 'grid',
-            // gridTemplateColumns: 'repeat(3, 1fr)',
-            // border: 'solid black 2px',
-            // height: '50vh',
-          }
-        }
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          border: 'solid black 2px',
+          height: '50vh',
+        }}
       >
-        {/* <Editor language='xml' value={html} onChange={setHtml} /> */}
-        {/* <Editor language='css' value={css} onChange={setCss} /> */}
+        <Editor language='xml' value={html} onChange={setHtml} />
+        <Editor language='css' value={css} onChange={setCss} />
         <Editor language='javascript' value={js} onChange={setJs} />
       </div>
       <div style={{ height: '100%' }}>

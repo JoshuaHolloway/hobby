@@ -1,5 +1,6 @@
-import CodeEditor from '../../../../code-editor';
-import reset_code from './reset-code';
+// import CodeEditor from '../../../../code-editor';
+import CodeEditor from '../../../../../comps/code-editor/Code-Editor';
+import reset_code from '../../../../../code/helper/reset-code-editor/alg/tree/binary/height-balanced/reset-code';
 
 // ==============================================
 
@@ -9,20 +10,24 @@ export default function AlgsPage() {
   // --------------------------------------------
 
   const ex_1 = `
-    5
-   / \
- 10  25
-    /  \
-   12   3`;
+   5
+  / \\
+10  25
+   /  \\
+  12   3
+`;
 
   const ex_2 = `
        5
-      / \
+      / \\
      6   6
-    / \
+    / \\
    7   7
-  / \
- 8   8`;
+  / \\
+ 8   8
+`;
+
+  // --------------------------------------------
 
   return (
     <>
@@ -38,13 +43,17 @@ export default function AlgsPage() {
 
       <p>
         Example 1: Given the following tree [5, 10, 25, null, null, 12, 3]:
-        <span style={{ whiteSpace: 'pre-wrap' }}>{ex_1}</span>
+        <span style={{ whiteSpace: 'pre-wrap', fontFamily: 'consolas' }}>
+          {ex_1}
+        </span>
         returns true;
       </p>
 
       <p>
         Example 2: Given the following tree [5,6,6,7,7,None,None,8,8]:
-        {ex_2}
+        <span style={{ whiteSpace: 'pre-wrap', fontFamily: 'consolas' }}>
+          {ex_2}
+        </span>
         returns false;
       </p>
       <CodeEditor reset_code={reset_code} />
