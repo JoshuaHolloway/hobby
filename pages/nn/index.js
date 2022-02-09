@@ -2,27 +2,65 @@
 import MathJax from 'react-mathjax';
 
 export default function Home() {
-  const inlineFormula = `k_{n+1} = n^2 + k_n^2 - k_{n-1}`;
-  const blockFormula = `\\int_0^\\infty x^2 dx`;
+  // const inlineFormula = `k_{n+1} = n^2 + k_n^2 - k_{n-1}`;
+  // const blockFormula = `\\int_0^\\infty x^2 dx`;
 
   // const bf_1 = `f(x) = \\int_{-\\infty}^\\infty
   //   \\hat f(\\xi)\\,e^{2 \\pi i \\xi x}
   //   \\,d\\xi`;
 
-  const bf_2 = `\\begin{bmatrix} 1& 2&3 &4  \\end{bmatrix}`;
+  // const bf_2 = `\\begin{bmatrix} 1& 2&3 &4  \\end{bmatrix}`;
+
+  //   const bf_3 = `A=\\begin{pmatrix}
+  // a_{11} & a_{12} & \\dots & a_{1n} \\newline
+  // a_{21} & a_{22} & \\dots & a_{2n} \\newline
+  // \\vdots & \\vdots & \\ddots & \\vdots \\newline
+  // a_{m1} & a_{m2} & \\dots & a_{mn}
+  // \\end{pmatrix}`;
+
+  const bf_4 = `x^{(i)} = 
+        \\left[
+            \\begin{array}{ccc}
+            x_{1}^{(i)} \\newline
+            \\vdots \\newline
+            x_{n_x}^{(i)} \\newline
+            \\end{array}
+        \\right]
+    \\in \\mathbb{R}^{n_x} `;
+
+  const bf_5 = `y^{\(i\)} \\in \\{0,1\\}`;
+
+  const bf_6 = `\\left( x^{\(i\)}, y^{\(i\)} \\right) = \\left( x, y
+            \\right) ^{\(i\)}`;
 
   return (
     <div style={{ padding: 50 }}>
       <MathJax.Provider>
         <div>
-          <p>
+          {/* <p>
             Inline formula: <MathJax.Node inline formula={inlineFormula} />
-          </p>
-          <hr></hr>
-          <p>Block formula:</p>
-          <MathJax.Node formula={blockFormula} />
+          </p> */}
+          {/* <hr></hr> */}
+          {/* <p>Block formula:</p> */}
+          {/* <MathJax.Node formula={blockFormula} /> */}
 
-          <MathJax.Node formula={bf_2} />
+          {/* <MathJax.Node formula={bf_2} /> */}
+
+          {/* <MathJax.Node formula={bf_3} /> */}
+
+          <p>
+            Input vector:
+            <MathJax.Node formula={bf_4} />
+          </p>
+
+          <p>
+            Label: <MathJax.Node formula={bf_5} />
+          </p>
+
+          <p>
+            Training example:
+            <MathJax.Node formula={bf_6} />
+          </p>
         </div>
       </MathJax.Provider>
     </div>
