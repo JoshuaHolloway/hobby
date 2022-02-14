@@ -33,6 +33,16 @@ export default function Home() {
   const bf_6 = `\\left( x^{\(i\)}, y^{\(i\)} \\right) = \\left( x, y
             \\right) ^{\(i\)}`;
 
+  const bf_90 = `dz = \\left(
+   \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial z}
+  \\right)
+  = \\left(
+   \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial  \\left( \\sigma \\left( z \\right) \\right) }
+  \\right)   
+  \\left(
+   \\frac{\\partial  \\left( \\sigma \\left( z \\right) \\right) } {\\partial z}
+  \\right)`;
+
   return (
     <div style={{ padding: 50 }}>
       <MathJax.Provider>
@@ -61,6 +71,13 @@ export default function Home() {
             Training example:
             <MathJax.Node formula={bf_6} />
           </p>
+
+          <p>
+            Chain rule for dz (used for gradient backpropagation)
+            <MathJax.Node formula={bf_90} />
+          </p>
+
+          <p>🚧 Under construction! 🚧</p>
         </div>
       </MathJax.Provider>
     </div>
