@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState, useRef } from 'react';
 import * as Tone from 'tone';
+
+import css from './web-audio.module.scss';
 
 // ==============================================
 
@@ -27,6 +28,8 @@ export default function ToneJS() {
   const [player_hh, setPlayer_hh] = useState();
   const [player_bass, setPlayer_bass] = useState();
   const [player_snare, setPlayer_snare] = useState();
+
+  const pattern_ref = useRef([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
   const [pattern_hh, setPattern_hh] = useState([
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -90,20 +93,20 @@ export default function ToneJS() {
     setTime(t);
 
     const idx = _beat * 4 + _sixteenth;
+    console.log('idx: ', idx);
 
-    const idx_mod = idx % 16;
-
-    if (pattern_hh[idx_mod]) {
+    if (pattern_ref.current[idx]) {
+      console.log(`pattern[${idx}]: `, pattern_hh);
       player_hh.start(t);
       player_hh.stop(t + 0.5);
     }
 
-    if (pattern_bass[idx_mod]) {
+    if (pattern_bass[idx]) {
       player_bass.start(t);
       player_bass.stop(t + 0.5);
     }
 
-    if (pattern_snare[idx_mod]) {
+    if (pattern_snare[idx]) {
       player_snare.start(t);
       player_snare.stop(t + 0.5);
     }
@@ -140,6 +143,25 @@ export default function ToneJS() {
 
   // --------------------------------------------
 
+  const clickHandler = (n) => () => {
+    // For UI
+    setPattern_hh((prev) => {
+      const updated = [...prev];
+      updated[n] = (prev[n] + 1) % 2;
+      console.log('updated: ', updated);
+      return updated;
+    });
+
+    // For actual pattern played
+    pattern_ref.current[n] = (pattern_ref.current[n] + 1) % 2;
+  };
+
+  useEffect(() => {
+    console.log('pattern_hh: ', pattern_hh);
+  }, [pattern_hh]);
+
+  // --------------------------------------------
+
   return (
     <>
       <button onClick={startHandler}>Start</button>
@@ -157,6 +179,84 @@ export default function ToneJS() {
 
       <input value={bpm} type='range' onChange={bpmHandler} />
       <span>BPM: {bpm}</span>
+
+      <div className={css.beat_container}>
+        <div className={css.bar_container}>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[0] ? css.on : css.off}`}
+            onClick={clickHandler(0)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[1] ? css.on : css.off}`}
+            onClick={clickHandler(1)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[2] ? css.on : css.off}`}
+            onClick={clickHandler(2)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[3] ? css.on : css.off}`}
+            onClick={clickHandler(3)}
+          ></div>
+        </div>
+
+        <div className={css.bar_container}>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[4] ? css.on : css.off}`}
+            onClick={clickHandler(4)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[5] ? css.on : css.off}`}
+            onClick={clickHandler(5)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[6] ? css.on : css.off}`}
+            onClick={clickHandler(6)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[7] ? css.on : css.off}`}
+            onClick={clickHandler(7)}
+          ></div>
+        </div>
+
+        <div className={css.bar_container}>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[8] ? css.on : css.off}`}
+            onClick={clickHandler(8)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[9] ? css.on : css.off}`}
+            onClick={clickHandler(9)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[10] ? css.on : css.off}`}
+            onClick={clickHandler(10)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[11] ? css.on : css.off}`}
+            onClick={clickHandler(11)}
+          ></div>
+        </div>
+
+        <div className={css.bar_container}>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[12] ? css.on : css.off}`}
+            onClick={clickHandler(12)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[13] ? css.on : css.off}`}
+            onClick={clickHandler(13)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[14] ? css.on : css.off}`}
+            onClick={clickHandler(14)}
+          ></div>
+          <div
+            className={`${css.sixteenth} ${pattern_hh[15] ? css.on : css.off}`}
+            onClick={clickHandler(15)}
+          ></div>
+        </div>
+      </div>
     </>
   );
 }

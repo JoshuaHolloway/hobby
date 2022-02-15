@@ -1,0 +1,32 @@
+.beat_container {
+  background: red;
+
+  height: 200px;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  .bar_container {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border: solid black 2px;
+
+    gap: 5px;
+
+    .sixteenth {
+      height: 100%;
+      width: 100px;
+      border: solid black 2px;
+
+      &.on {
+        background: black;
+      }
+    }
+  }
+}
