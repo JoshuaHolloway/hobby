@@ -44,6 +44,8 @@ export default function Home() {
   const bf_6 = `\\left( x^{\(i\)}, y^{\(i\)} \\right) = \\left( x, y
             \\right) ^{\(i\)}`;
 
+  const bf_6a = `\\bigg\\{ (x, y)^{(1)}, \\ldots, (x, y)^{(i)}, \\ldots, (x, y)^{(m)} \\bigg\\} `;
+
   const bf_90 = `dz = 
    \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial z}
   
@@ -63,6 +65,13 @@ export default function Home() {
   \\left(
    \\frac{\\partial  \\sigma  } {\\partial z}
   \\right)`;
+
+  const bf_Y = `Y = \\left[ 
+            \\begin{array}{ccc}
+            y^{(1)} & \\ldots & y^{(i)} & \\ldots & y^{(m)}
+            \\end{array}
+        \\right]
+        \\in \\{0,1\\}^{1 \\times m}`;
 
   return (
     <div style={{ padding: 50 }}>
@@ -94,8 +103,16 @@ export default function Home() {
           </p>
 
           <p>
+            Output vector: <MathJax.Node formula={bf_Y} />
+          </p>
+
+          <p>
             Training example:
             <MathJax.Node formula={bf_6} />
+          </p>
+
+          <p>
+            Set of m-training examples: <MathJax.Node formula={bf_6a} />
           </p>
 
           <p>
