@@ -44,7 +44,8 @@ export default function Home() {
   const bf_6 = `\\left( x^{\(i\)}, y^{\(i\)} \\right) = \\left( x, y
             \\right) ^{\(i\)}`;
 
-  const bf_6a = `\\bigg\\{ (x, y)^{(1)}, \\ldots, (x, y)^{(i)}, \\ldots, (x, y)^{(m)} \\bigg\\} `;
+  // https://www.overleaf.com/learn/latex/Brackets_and_Parentheses
+  const bf_6a = `\\Big\\{ (x, y)^{(1)}, \\ldots, (x, y)^{(i)}, \\ldots, (x, y)^{(m)} \\Big\\} `;
 
   const bf_90 = `dz = 
    \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial z}
