@@ -43,6 +43,16 @@ export default function Home() {
    \\frac{\\partial  \\left( \\sigma \\left( z \\right) \\right) } {\\partial z}
   \\right)`;
 
+  const bf_91 = `dz = 
+   \\frac{ \\partial \\mathscr{L} }{ \\partial z }
+  
+  = \\left(
+   \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial  \\left( \\sigma \\left( z \\right) \\right) }
+  \\right)   
+  \\left(
+   \\frac{\\partial  \\left( \\sigma \\left( z \\right) \\right) } {\\partial z}
+  \\right)`;
+
   return (
     <div style={{ padding: 50 }}>
       <MathJax.Provider>

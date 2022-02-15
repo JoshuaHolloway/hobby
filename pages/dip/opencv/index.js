@@ -1,18 +1,30 @@
 import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 
+// ==============================================
+
 export default function Home() {
+  // --------------------------------------------
+
+  const [button_1_disabled, setButton1Disabled] = useState(false);
+  const [button_2_disabled, setButton2Disabled] = useState(true);
+  const [button_3_disabled, setButton3Disabled] = useState(true);
+
+  // --------------------------------------------
+
   const [mounted, setMount] = useState(false);
   useEffect(() => {
     setMount(true);
     return () => setMount(false);
   }, []);
 
+  // --------------------------------------------
+
   const image_src_ref = useRef();
   const file_input_ref = useRef();
   const canvas_output_ref = useRef();
 
-  useEffect(() => {}, [mounted]);
+  // --------------------------------------------
 
   return (
     <div>
@@ -21,12 +33,15 @@ export default function Home() {
       <div className='caption'>
         imageSrc{' '}
         <input
+          disabled={button_1_disabled}
           type='file'
           id='fileInput'
           ref={file_input_ref}
           name='file'
           onChange={(e) => {
             image_src_ref.current.src = URL.createObjectURL(e.target.files[0]);
+            setButton1Disabled(true);
+            setTimeout(() => setButton2Disabled(false), 1e3);
           }}
         />
       </div>
@@ -42,6 +57,7 @@ export default function Home() {
       />
 
       <button
+        disabled={button_2_disabled}
         onClick={() => {
           let mat = cv.imread(image_src_ref.current);
           console.log('mat: ', mat);
@@ -64,7 +80,7 @@ export default function Home() {
           let red_src = rgbaPlanes.get(0);
 
           let dst = new cv.Mat();
-          let ksize = new cv.Size(23, 23);
+          let ksize = new cv.Size(35, 35);
           // You can try more different parameters
           cv.GaussianBlur(red_src, dst, ksize, 0, 0, cv.BORDER_DEFAULT);
           cv.imshow(canvas_output_ref.current, dst);
