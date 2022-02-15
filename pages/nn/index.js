@@ -99,11 +99,11 @@ export default function Home() {
           </p>
 
           <p>
-            Label: <MathJax.Node formula={bf_5} />
+            Output vector: <MathJax.Node formula={bf_Y} />
           </p>
 
           <p>
-            Output vector: <MathJax.Node formula={bf_Y} />
+            Label: <MathJax.Node formula={bf_5} />
           </p>
 
           <p>
