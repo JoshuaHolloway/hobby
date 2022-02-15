@@ -23,7 +23,7 @@ export default function ToneJS() {
   const [index, setIndex] = useState();
   const [time, setTime] = useState();
 
-  const [bpm, setBpm] = useState(60);
+  const [bpm, setBpm] = useState(82);
 
   const [player_hh, setPlayer_hh] = useState();
   const [player_bass, setPlayer_bass] = useState();
@@ -36,7 +36,7 @@ export default function ToneJS() {
   ]);
 
   const [pattern_bass, setPattern_bass] = useState([
-    1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+    1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0,
   ]);
 
   const [pattern_snare, setPattern_snare] = useState([
@@ -65,11 +65,13 @@ export default function ToneJS() {
         // ).toMaster()
       );
     }
+
+    bpmHandler({ target: { value: 82 } });
   }, [mounted]);
 
-  useEffect(() => {
-    setIndex(beat * 4 + sixteenth);
-  }, [beat]);
+  // useEffect(() => {
+  //   setIndex(beat * 4 + sixteenth);
+  // }, [beat]);
 
   // --------------------------------------------
 
@@ -93,6 +95,7 @@ export default function ToneJS() {
     setTime(t);
 
     const idx = _beat * 4 + _sixteenth;
+    setIndex(idx);
     console.log('idx: ', idx);
 
     if (pattern_ref.current[idx]) {
@@ -183,76 +186,108 @@ export default function ToneJS() {
       <div className={css.beat_container}>
         <div className={css.bar_container}>
           <div
-            className={`${css.sixteenth} ${pattern_hh[0] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[0] ? css.on : css.off} ${
+              index === 0 ? css.active : ''
+            }`}
             onClick={clickHandler(0)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[1] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[1] ? css.on : css.off} ${
+              index === 1 ? css.active : ''
+            }`}
             onClick={clickHandler(1)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[2] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[2] ? css.on : css.off}  ${
+              index === 2 ? css.active : ''
+            }`}
             onClick={clickHandler(2)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[3] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[3] ? css.on : css.off}  ${
+              index === 3 ? css.active : ''
+            }`}
             onClick={clickHandler(3)}
           ></div>
         </div>
 
         <div className={css.bar_container}>
           <div
-            className={`${css.sixteenth} ${pattern_hh[4] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[4] ? css.on : css.off}  ${
+              index === 4 ? css.active : ''
+            }`}
             onClick={clickHandler(4)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[5] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[5] ? css.on : css.off}  ${
+              index === 5 ? css.active : ''
+            }`}
             onClick={clickHandler(5)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[6] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[6] ? css.on : css.off}  ${
+              index === 6 ? css.active : ''
+            }`}
             onClick={clickHandler(6)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[7] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[7] ? css.on : css.off}  ${
+              index === 7 ? css.active : ''
+            }`}
             onClick={clickHandler(7)}
           ></div>
         </div>
 
         <div className={css.bar_container}>
           <div
-            className={`${css.sixteenth} ${pattern_hh[8] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[8] ? css.on : css.off}  ${
+              index === 8 ? css.active : ''
+            }`}
             onClick={clickHandler(8)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[9] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${pattern_hh[9] ? css.on : css.off}  ${
+              index === 9 ? css.active : ''
+            }`}
             onClick={clickHandler(9)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[10] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${
+              pattern_hh[10] ? css.on : css.off
+            }  ${index === 10 ? css.active : ''}`}
             onClick={clickHandler(10)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[11] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${
+              pattern_hh[11] ? css.on : css.off
+            }  ${index === 11 ? css.active : ''}`}
             onClick={clickHandler(11)}
           ></div>
         </div>
 
         <div className={css.bar_container}>
           <div
-            className={`${css.sixteenth} ${pattern_hh[12] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${
+              pattern_hh[12] ? css.on : css.off
+            }  ${index === 12 ? css.active : ''}`}
             onClick={clickHandler(12)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[13] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${
+              pattern_hh[13] ? css.on : css.off
+            }  ${index === 13 ? css.active : ''}`}
             onClick={clickHandler(13)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[14] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${
+              pattern_hh[14] ? css.on : css.off
+            }  ${index === 14 ? css.active : ''}`}
             onClick={clickHandler(14)}
           ></div>
           <div
-            className={`${css.sixteenth} ${pattern_hh[15] ? css.on : css.off}`}
+            className={`${css.sixteenth} ${
+              pattern_hh[15] ? css.on : css.off
+            }  ${index === 15 ? css.active : ''}`}
             onClick={clickHandler(15)}
           ></div>
         </div>
