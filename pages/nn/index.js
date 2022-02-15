@@ -28,14 +28,25 @@ export default function Home() {
         \\right]
     \\in \\mathbb{R}^{n_x} `;
 
+  // const bf_4a = `\\begin{bmatrix} 1& 2&3 &4  \\end{bmatrix}`;
+
+  const bf_4a = `X = \\left[
+        \\begin{array}{ccc}
+        | &        & | &        & |  \\newline
+        x^{(1)} & \\ldots & x^{(i)} & \\ldots & x^{(m)}  \\newline
+        | &        & | &        & | 
+        \\end{array}
+        \\right] 
+        \\in \\mathbb{R}^{n_x \\times m}`;
+
   const bf_5 = `y^{\(i\)} \\in \\{0,1\\}`;
 
   const bf_6 = `\\left( x^{\(i\)}, y^{\(i\)} \\right) = \\left( x, y
             \\right) ^{\(i\)}`;
 
-  const bf_90 = `dz = \\left(
+  const bf_90 = `dz = 
    \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial z}
-  \\right)
+  
   = \\left(
    \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial  \\left( \\sigma \\left( z \\right) \\right) }
   \\right)   
@@ -47,10 +58,10 @@ export default function Home() {
    \\frac{ \\partial \\mathscr{L} }{ \\partial z }
   
   = \\left(
-   \\frac{\\partial \\mathscr{L} \\left( \\sigma \\left( z \\right) \\right)}{\\partial  \\left( \\sigma \\left( z \\right) \\right) }
+   \\frac{\\partial \\mathscr{L} }{\\partial  \\sigma  }
   \\right)   
   \\left(
-   \\frac{\\partial  \\left( \\sigma \\left( z \\right) \\right) } {\\partial z}
+   \\frac{\\partial  \\sigma  } {\\partial z}
   \\right)`;
 
   return (
@@ -74,6 +85,11 @@ export default function Home() {
           </p>
 
           <p>
+            Data matrix:
+            <MathJax.Node formula={bf_4a} />
+          </p>
+
+          <p>
             Label: <MathJax.Node formula={bf_5} />
           </p>
 
@@ -85,6 +101,7 @@ export default function Home() {
           <p>
             Chain rule for dz (used for gradient backpropagation)
             <MathJax.Node formula={bf_90} />
+            <MathJax.Node formula={bf_91} />
           </p>
 
           <p>🚧 Under construction! 🚧</p>
