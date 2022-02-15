@@ -1,7 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 
+// ==============================================
+
 export default function Home() {
+  // --------------------------------------------
+
+  const [button_1_disabled, setButton1Disabled] = useState(false);
+  const [button_2_disabled, setButton2Disabled] = useState(true);
+  const [button_3_disabled, setButton3Disabled] = useState(true);
+
+  // --------------------------------------------
+
   const [mounted, setMount] = useState(false);
   useEffect(() => {
     setMount(true);
@@ -9,11 +19,15 @@ export default function Home() {
   }, []);
   useEffect(() => {}, [mounted]);
 
+  // --------------------------------------------
+
   const canvas_ref = useRef();
   const img_ref = useRef();
 
   const ctx_ref = useRef();
   const input_array_ref = useRef();
+
+  // --------------------------------------------
 
   return (
     <div>
@@ -24,7 +38,10 @@ export default function Home() {
         width='512px'
       ></canvas>
 
+      {/* ----------------------------------- */}
+
       <button
+        disabled={button_1_disabled}
         onClick={async () => {
           // Create new img element
           img_ref.current = new Image();
@@ -35,12 +52,18 @@ export default function Home() {
           ctx_ref.current = canvas_ref.current.getContext('2d');
 
           input_array_ref.current = new Uint8Array();
+
+          setButton1Disabled(true);
+          setTimeout(() => setButton2Disabled(false), 0.6e3);
         }}
       >
         Load Image
       </button>
 
+      {/* ----------------------------------- */}
+
       <button
+        disabled={button_2_disabled}
         onClick={() => {
           ctx_ref.current.drawImage(img_ref.current, 0, 0);
 
@@ -57,13 +80,19 @@ export default function Home() {
 
           // Point at image data to be used by WASM
           input_array_ref.current = imgData_Uint8;
+
+          setButton2Disabled(true);
+          setTimeout(() => setButton3Disabled(false), 0.1e3);
         }}
       >
         Render Loaded Image
       </button>
 
+      {/* ----------------------------------- */}
+
       <Script src='/wasm/hello.js' strategy='beforeInteractive' />
       <button
+        disabled={button_3_disabled}
         onClick={() => {
           var addOne = Module.cwrap('addOne', null, [
             'number',
