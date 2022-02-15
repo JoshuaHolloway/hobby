@@ -94,18 +94,18 @@ export default function ToneJS() {
     const idx_mod = idx % 16;
 
     if (pattern_hh[idx_mod]) {
-      player_hh.start(time);
-      player_hh.stop(time + 0.5);
+      player_hh.start(t);
+      player_hh.stop(t + 0.5);
     }
 
     if (pattern_bass[idx_mod]) {
-      player_bass.start(time);
-      player_bass.stop(time + 0.5);
+      player_bass.start(t);
+      player_bass.stop(t + 0.5);
     }
 
     if (pattern_snare[idx_mod]) {
-      player_snare.start(time);
-      player_snare.stop(time + 0.5);
+      player_snare.start(t);
+      player_snare.stop(t + 0.5);
     }
   };
 
