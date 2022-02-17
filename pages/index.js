@@ -11,7 +11,7 @@ export default function HomePage() {
       <hr />
       <Link href='/dip/raw-wasm'>Image Processing (WebAssembly)</Link>
       <hr />
-      <Link href='/nn'>Deep Learning</Link>
+      <Link href='/ml'>Machine Learning</Link>
       <hr />
       <Link href='/web-audio'>Audio</Link>
       <hr />
